@@ -19,11 +19,14 @@ class DBOp
     }
     
     public function getItemByBarcode($itemCode){
-        $stmt = $this->conn->prepare("SELECT hajji_points FROM  `hajji-table` WHERE hajji_SYSID = ?");
+        $stmt = $this->conn->prepare("SELECT hajji_points, hajji_name FROM  `hajji-table` WHERE hajji_SYSID = ?");
         $stmt->bind_param("s", $itemCode);
         $stmt->execute();
-        $stmt->bind_result($hajjiPoints);
+        $stmt->bind_result($hajjiPoints, $hajjiName);
         $stmt->fetch();
-        return $hajjiPoints;
+        $info = array();
+        $item['points'] = $itemName;
+        $item['name'] = $hajjiName;
+        return $item;
     }
 }
