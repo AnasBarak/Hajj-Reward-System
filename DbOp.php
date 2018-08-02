@@ -25,7 +25,7 @@ class DBOp
         $stmt->bind_result($hajjiPoints, $hajjiName);
         $stmt->fetch();
         $info = array();
-        $item['points'] = $itemName;
+        $item['points'] = $hajjiPoints;
         $item['name'] = $hajjiName;
         return $item;
     }
