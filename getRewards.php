@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
  
         if ($db->doesCompExist($hajjiID)) {
             $response['state'] = "yes";
-            $response['companies'] = $db->getRewardsByCompany($hajjiID);
+            $response['rewards'] = $db->getRewardsByCompany($hajjiID);
         } else {
             $response['state'] = "no";
             $response['message'] = 'Invalid Company';
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     } else {
         $response['state'] = "yes";
-    $response['rewards'] = $db->getCompanies();
+    $response['companies'] = $db->getCompanies();
     }
 
  

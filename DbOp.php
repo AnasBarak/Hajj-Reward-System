@@ -34,8 +34,13 @@ class DBOp
         $stmt = $this->conn->prepare("SELECT DISTINCT reward_company FROM `rewards-table`;");
         $stmt->execute();
         $stmt->bind_result($rewardComp);
-        $stmt->fetch();
-        return $rewardComp;
+        $rewardComps = array();
+        $i = 0;
+        while ($stmt->fetch()) {
+            $rewardComps[$i] = $rewardComp;
+            $i++;
+        }
+        return $rewardComps;
     }
     
     public function getRewardsByCompany($rewardComp){
