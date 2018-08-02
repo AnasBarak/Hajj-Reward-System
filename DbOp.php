@@ -48,11 +48,16 @@ class DBOp
         $stmt->bind_param("s", $rewardComp);
         $stmt->execute();
         $stmt->bind_result($rewardName, $rewardPrice);
-        $stmt->fetch();
-        $info = array();
-        $info['price'] = $rewardPrice;
-        $info['name'] = $rewardName;
-        return $info;
+        $rewards = array();
+        $i = 0;
+        while ($stmt->fetch()) {
+            $info = array();
+            $info['price'] = $rewardPrice;
+            $info['name'] = $rewardName;
+            $rewards[i] = $info;
+            $i++;
+        }
+        return $rewards;
     }
     
     public function doesCompExist($rewardComp){
