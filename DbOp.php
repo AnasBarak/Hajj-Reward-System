@@ -25,8 +25,36 @@ class DBOp
         $stmt->bind_result($hajjiPoints, $hajjiName);
         $stmt->fetch();
         $info = array();
-        $item['points'] = $hajjiPoints;
-        $item['name'] = $hajjiName;
-        return $item;
+        $info['points'] = $hajjiPoints;
+        $info['name'] = $hajjiName;
+        return $info;
+    }
+    
+    public function getCompanies(){
+        $stmt = $this->conn->prepare("SELECT DISTINCT reward_company FROM `rewards-table`;");
+        $stmt->execute();
+        $stmt->bind_result($rewardComp);
+        $stmt->fetch();
+        return $rewardComp;
+    }
+    
+    public function getRewardsByCompany($rewardComp){
+        $stmt = $this->conn->prepare("SELECT `reward_name`,`reward_price`FROM `rewards-table` WHERE reward_company = ?;");
+        $stmt->bind_param("s", $rewardComp);
+        $stmt->execute();
+        $stmt->bind_result($rewardName, $rewardPrice);
+        $stmt->fetch();
+        $info = array();
+        $info['price'] = $rewardPrice;
+        $info['name'] = $rewardName;
+        return $info;
+    }
+    
+    public function doesCompExist($rewardComp){
+        $stmt = $this->conn->prepare("SELECT DISTINCT reward_company FROM `rewards-table` where reward_company = ?;");
+        $stmt->bind_param("s", $rewardComp);
+        $stmt->execute();
+        $stmt->store_result();
+        return $stmt->affected_rows > 0;
     }
 }
