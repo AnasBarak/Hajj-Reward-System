@@ -5,7 +5,7 @@ class DBOp
     private $conn;
 
     function __construct(){
-        require_once('DBconn.php');
+        require_once('DbConn.php');
         $db = new DbConnect();
         $this->conn = $db->connect();
     }
