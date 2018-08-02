@@ -19,14 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
  
     
     } else {
-        $response['state'] = "no";
-        $response['message'] = 'Parameters are missing';
+        $response['state'] = "yes";
+    $response['rewards'] = $db->getCompanies();
     }
 
  
 } else {
-    $response['state'] = "yes";
-    $response['rewards'] = $db->getCompanies();
+    $response['state'] = "no";
+    $response['message'] = "Request not allowed";
 }
  
 echo json_encode($response);
