@@ -19,8 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
  
     
     } else {
+                $db = new DBOp();
+
         $response['state'] = "yes";
-    $response['companies'] = $db->getCompanies();
+        $response['companies'] = $db->getCompanies();
     }
 
  
