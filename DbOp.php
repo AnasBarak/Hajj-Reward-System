@@ -54,7 +54,7 @@ class DBOp
             $info = array();
             $info['price'] = $rewardPrice;
             $info['name'] = $rewardName;
-            $rewards[i] = $info;
+            $rewards[$i] = $info;
             $i++;
         }
         return $rewards;
