@@ -1,5 +1,5 @@
 <?php
-require_once('DB_Operation.php');
+require_once('DbOp.php');
 $response = array();
  
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['ID'])) {
         $hajjiID = ($_POST['ID']);
 
-        $db = new DbOperation();
+        $db = new DBOp();
  
         if ($db->doesItemExist($hajjiID)) {
             $response['state'] = "yes";
