@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
  
         if ($db->doesItemExist($hajjiID)) {
             $response['state'] = "yes";
-            $response['points'] = $db->getItemByBarcode($hajjiID);
+            $response['info'] = $db->getItemByBarcode($hajjiID);
         } else {
             $response['state'] = "no";
             $response['message'] = 'Invalid ID';
