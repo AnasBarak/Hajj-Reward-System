@@ -5,13 +5,13 @@ $response = array();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (isset($_POST['company'])) {
-        $hajji = ($_POST['company']);
+        $company = ($_POST['company']);
 
         $db = new DBOp();
  
-        if ($db->doesCompExist($hajjiID)) {
+        if ($db->doesCompExist($company)) {
             $response['state'] = "yes";
-            $response['rewards'] = $db->getRewardsByCompany($hajjiID);
+            $response['rewards'] = $db->getRewardsByCompany($company);
         } else {
             $response['state'] = "no";
             $response['message'] = 'Invalid Company';
