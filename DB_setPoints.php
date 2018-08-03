@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $db = new DBOp();
  
-        if ($db->doesCompExist($ID)) {
+        if ($db->doesItemExist($ID)) {
             $response['state'] = "yes";
             $response['return'] = $db->setPoint($ID,1);
         } else {
