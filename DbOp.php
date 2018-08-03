@@ -67,4 +67,13 @@ class DBOp
         $stmt->store_result();
         return $stmt->affected_rows > 0;
     }
+    
+    public function setPoint($ID, $points){
+        $stmt = $this->conn->prepare("UPDATE `hajji-table` SET `hajji_points` = hajji_points + ? WHERE `hajji_SYSID` = ?;");
+        $stmt->bind_param("is", $points, $ID);
+        $stmt->execute();
+        $stmt->store_result();
+        return $stmt->affected_rows > 0;
+        
+    }
 }
