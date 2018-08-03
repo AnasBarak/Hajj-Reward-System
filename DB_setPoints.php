@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $response['return'] = $db->setPoint($ID,1);
         } else {
             $response['state'] = "no";
-            $response['message'] = 'Invalid Company';
+            $response['message'] = 'Invalid ID';
         }
  
     
